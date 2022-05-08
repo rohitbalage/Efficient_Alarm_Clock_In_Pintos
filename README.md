@@ -1,2 +1,9 @@
-# Efficient_Alarm_Clock_In_Pintos
-Task: Efficient Alarm Clock In Pintos, threads may call this function to put themselves to sleep: /** * This function suspends execution of the calling thread until time has * advanced by at least x timer ticks. Unless the system is otherwise idle, the * thread need not wake up after exactly x ticks. Just put it on the ready queue * after they have waited for the right number of ticks. The argument to * timer_sleep() is expressed in timer ticks, not in milliseconds or any another * unit. There are TIMER_FREQ timer ticks per second, where TIMER_FREQ is a * constant defined in devices/timer.h (spoiler: it's 100 ticks per second). **/ void timer_sleep (int64_t ticks); timer_sleep() is useful for threads that operate in real-time (e.g. for blinking the cursor once per second). The current implementation of timer_sleep() is inefficient, because it calls thread_yield() in a loop until enough time has passed. Your task is to re-implement timer_sleep() so that it executes efficiently without any ”busy waiting”. That is, your implementation has to use an ordered list so that any thread calling timer_sleep() will be inserted to the list until its timer expires. The thread’s state has be changed to THR_SLEEP when it is in the sleeping list.
+# Pintos
+Labs for graduate OS class (545) at Cleveland State University. 
+
+Code is from Labs for undergraduate OS class (600.318) at Johns Hopkins. [Pintos](http://pintos-os.org) 
+is a teaching operating system for x86, challenging but not overwhelming, small
+but realistic enough to understand OS in depth (it can run x86 machine and simulators 
+including QEMU, Bochs and VMWare Player!). The main source code, documentation and assignments 
+are developed by Ben Pfaff and others from Stanford (refer to its [LICENSE](./LICENSE)).
+There are some minor changes made by ([Ryan Huang](huang@cs.jhu.edu))
